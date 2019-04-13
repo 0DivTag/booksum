@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Books from "../../data/books.json";
 import styles from "./Text.module.css";
+import CopyIcon from "../../CopyIcon.svg";
 
 class Text extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class Text extends Component {
 
     this.state = {
       text: [],
-      wordsPerParagraph: 20
+      wordsPerParagraph: 20,
+      copyState: false
     };
     // props = Paragraphs (5)
   }
@@ -48,11 +50,39 @@ class Text extends Component {
     }
   }
 
+  copyToClipboard = e => {
+    e.preventDefault();
+    const el = document.createElement("textarea");
+    for (let i = 0; i < this.props.Paragraphs; i++) {
+      el.value += `${this.state.text[i].props.children} \n`;
+    }
+    el.setAttribute("readonly", "");
+    el.style.position = "absolute";
+    el.style.left = "-9999px";
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+
+    this.setState({ copyState: true });
+  };
+
   render() {
     return (
-      <section className={styles.Box}>
-        <div className={styles.Text}>{this.state.text}</div>
-      </section>
+      <div>
+        <img
+          src={CopyIcon}
+          className={styles.Icon}
+          alt="Copy Icon"
+          onClick={this.copyToClipboard}
+        />
+        {this.state.copyState ? (
+          <div className={styles.CopySuccess}>Copied!</div>
+        ) : null}
+        <section className={styles.Box}>
+          <div className={styles.Text}>{this.state.text}</div>
+        </section>
+      </div>
     );
   }
 }
