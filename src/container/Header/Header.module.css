@@ -10,6 +10,13 @@
   padding: 0 30px;
 }
 
+@media (max-width: 575px) {
+  .Header {
+    justify-content: center;
+    padding: 0;
+  }
+}
+
 .Header h2 {
   color: white;
   font-weight: 800;
