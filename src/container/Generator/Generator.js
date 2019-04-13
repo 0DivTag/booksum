@@ -6,7 +6,7 @@ import Text from "../../components/Text/Text";
 class Generator extends Component {
   constructor(props) {
     super(props);
-    this.state = { FormValue: 5 };
+    this.state = { FormValue: 3 };
   }
 
   handleSubmit = Value => {
