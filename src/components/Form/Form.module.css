@@ -1,5 +1,4 @@
 .Input {
-  width: 5%;
   border: 3px solid #000000;
   box-sizing: border-box;
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
@@ -9,6 +8,8 @@
   font-weight: 800;
   font-size: 2rem;
   box-sizing: border-box;
+  max-width: 150px;
+  min-width: 100px;
 }
 
 .Title {
