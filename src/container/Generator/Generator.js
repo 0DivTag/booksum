@@ -6,19 +6,18 @@ import Text from "../../components/Text/Text";
 class Generator extends Component {
   constructor(props) {
     super(props);
-    this.state = { FormValue: 5, paragraphs: 5 };
+    this.state = { FormValue: 5 };
   }
 
-  handleSubmit = FormValue => {
-    this.setState({ paragraphs: FormValue });
-    console.log(this.state.paragraphs);
+  handleSubmit = Value => {
+    this.setState({ FormValue: Value });
   };
 
   render() {
     return (
       <main className={styles.Main}>
         <Form FormValue={this.state.FormValue} onSubmit={this.handleSubmit} />
-        <Text Paragraphs={this.state.paragraphs} />
+        <Text Paragraphs={this.state.FormValue} />
       </main>
     );
   }
